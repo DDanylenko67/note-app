@@ -1,6 +1,7 @@
 package dev.ddanylenko.noteapp.note.controller;
 
 import dev.ddanylenko.noteapp.note.model.*;
+import dev.ddanylenko.noteapp.note.model.dto.NoteDto;
 import dev.ddanylenko.noteapp.note.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,20 +31,23 @@ public class NoteController {
     public ResponseEntity<NoteEntity> getNoteById(@PathVariable("id") String id) {
         logger.info("Getting note by id={}", id);
         NoteEntity noteEntity = noteService.getNoteById(id);
+        logger.info("Founded note by node={}", noteEntity);
         return ResponseEntity.status(HttpStatus.OK).body(noteEntity);
     }
 
     @PostMapping
     public ResponseEntity<NoteEntity> createNote(@RequestBody NoteDto noteDto) {
-        logger.info("Creating new note note={}", noteDto);
+        logger.info("Creating new note={}", noteDto);
         NoteEntity createdEntity = noteService.createNote(noteDto);
+        logger.info("Created note={}", createdEntity);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEntity);
     }
 
     @PostMapping("/{id}")
     public ResponseEntity<NoteEntity> updateNote(@PathVariable("id") String id, @RequestBody NoteDto noteDto) {
-        logger.info("Updating note with id={}", id);
+        logger.info("Updating note={} with id={}",noteDto, id);
         NoteEntity updatedEntity = noteService.updateNote(id, noteDto);
+        logger.info("Updated note={}",noteDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedEntity);
     }
 

@@ -1,5 +1,9 @@
 package dev.ddanylenko.noteapp.note.model;
 
+import dev.ddanylenko.noteapp.note.model.dto.NoteDto;
+import dev.ddanylenko.noteapp.note.model.dto.NoteShortDto;
+import dev.ddanylenko.noteapp.note.model.dto.NoteWithoutText;
+
 public class NoteMapper {
     public static NoteEntity toNoteEntity(NoteDto dto) {
         return new NoteEntity(

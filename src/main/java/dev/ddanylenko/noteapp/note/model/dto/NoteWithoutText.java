@@ -1,6 +1,7 @@
-package dev.ddanylenko.noteapp.note.model;
+package dev.ddanylenko.noteapp.note.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import dev.ddanylenko.noteapp.note.model.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -2,6 +2,7 @@ package dev.ddanylenko.noteapp.note.service;
 
 import dev.ddanylenko.noteapp.config.exception.NoteNotFoundException;
 import dev.ddanylenko.noteapp.note.model.*;
+import dev.ddanylenko.noteapp.note.model.dto.NoteDto;
 import dev.ddanylenko.noteapp.note.repository.NoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +28,7 @@ public class NoteService {
 
 
     public NoteEntity getNoteById(String id) {
-        logger.info("Getting not in NoteService with id={}", id);
+        logger.info("Getting in NoteService with id={}", id);
         return findById(id);
     }
 
@@ -93,6 +94,7 @@ public class NoteService {
             }
         }
         if(!tagList.isEmpty()){
+            logger.info("Found tags={}", (Object) tagList.toArray(Tag[]::new));
             page = getAll(tagList.toArray(Tag[]::new), pageable);
         }
         else{

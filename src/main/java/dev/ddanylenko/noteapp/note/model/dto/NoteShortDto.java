@@ -1,4 +1,4 @@
-package dev.ddanylenko.noteapp.note.model;
+package dev.ddanylenko.noteapp.note.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
