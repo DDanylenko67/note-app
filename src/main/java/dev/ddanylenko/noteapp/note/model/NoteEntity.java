@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @Document(collection = "notes")
 public class NoteEntity {
     @Id
-    private Long id;
+    private String id;
 
     @NotNull
     private String title;
@@ -26,4 +28,19 @@ public class NoteEntity {
     private String text;
 
     private Tag[] tags;
+
+
+    public Map<String, Integer> calcNoteStat(){
+        Map<String, Integer> map = new HashMap<>();
+        String[] strings = text.split(" ");
+        for(String s : strings){
+            if(map.containsKey(s)){
+                map.put(s, map.get(s)+1);
+            }
+            else {
+                map.put(s, 1);
+            }
+        }
+        return map;
+    }
 }

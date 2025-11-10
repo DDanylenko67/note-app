@@ -19,4 +19,21 @@ public class NoteMapper {
                 entity.getTags()
         );
     }
+
+    public static NoteShortDto toNoteShortDto(NoteEntity entity) {
+        return new NoteShortDto(
+                entity.getId(),
+                entity.getTitle(),
+                entity.getCreateDate()
+        );
+    }
+
+    public static NoteWithoutText toNoteWithoutText(NoteEntity entity) {
+        return new NoteWithoutText(
+                entity.getId(),
+                entity.getTitle(),
+                entity.getCreateDate(),
+                entity.getTags()
+        );
+    }
 }
