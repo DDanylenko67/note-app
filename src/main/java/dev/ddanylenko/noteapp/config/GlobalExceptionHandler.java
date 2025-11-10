@@ -27,4 +27,18 @@ public class GlobalExceptionHandler {
         ErrorResponseDto errorResponseDto = new ErrorResponseDto("Note was not found", e.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponseDto);
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponseDto> handleException(IllegalArgumentException e) {
+        logger.info("Handled exception", e);
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto("Id should be null", e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDto);
+    }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ErrorResponseDto> handleException(IllegalStateException e) {
+        logger.info("Handled exception", e);
+        ErrorResponseDto errorResponseDto = new ErrorResponseDto("Text and title should not be null", e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDto);
+    }
 }
