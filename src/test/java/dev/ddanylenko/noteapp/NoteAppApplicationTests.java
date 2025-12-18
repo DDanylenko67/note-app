@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class NoteAppApplicationTests {
 
     @Test
-    void contextLoads() {
+    void testingCreateNote() {
+
+
     }
 
 }
